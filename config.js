@@ -1,1 +1,0 @@
-window.SS_CONFIG={SUPABASE_URL:"https://mgjjbuomdmrfitggkxcn.supabase.co",SUPABASE_PUBLISHABLE_KEY:"sb_publishable_9CTcbIxbuyjPPMASbzt0gQ_0haU20Ze",STORAGE_BUCKET:"product image"};
