@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="S&S — curated fashion and handpicked finds.">
+<title>S&S | Style & Selection</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#home">
+    <div class="logo-mark">S&S</div>
+    <span><b>S&S</b><small>STYLE & SELECTION</small></span>
+  </a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#collections">Collections</a>
+    <button id="themeBtn" aria-label="Toggle theme">◐</button>
+    <a href="#admin">Admin</a>
+  </nav>
+</header>
+
+<main id="publicSite">
+  <section id="home" class="hero">
+    <p class="eyebrow">CURATED WITH INTENTION</p>
+    <h1>Style, <em>beautifully</em><br>selected.</h1>
+    <p class="hero-copy">A clean, refined edit of fashion worth discovering.</p>
+    <a class="button primary" href="#collections">Explore collections</a>
+  </section>
+
+  <section id="featuredSection" class="container hidden">
+    <div class="section-title">
+      <p class="eyebrow">PINNED PICKS</p><h2>Featured</h2>
+      <p>Your highlighted S&S selections.</p>
+    </div>
+    <div id="featuredGrid" class="product-grid"></div>
+  </section>
+
+  <section id="collections" class="container">
+    <div class="section-title">
+      <p class="eyebrow">THE EDIT</p><h2>Collections</h2>
+      <p>Open a collection to discover every handpicked piece.</p>
+    </div>
+    <div id="collectionGrid" class="collection-grid"></div>
+  </section>
+
+  <section id="collectionView" class="container hidden">
+    <button class="back-button" id="allCollections">← All collections</button>
+    <div id="collectionContent"></div>
+  </section>
+
+  <section id="productView" class="container hidden">
+    <button class="back-button" id="backToCollection">← Back to collection</button>
+    <div id="productContent"></div>
+  </section>
+</main>
+
+<main id="adminSite" class="container hidden">
+  <section id="loginPanel" class="panel login-panel">
+    <p class="eyebrow">PRIVATE ACCESS</p><h1>S&S Admin</h1>
+    <form id="loginForm">
+      <input id="email" type="email" placeholder="Email" required>
+      <input id="password" type="password" placeholder="Password" required>
+      <button class="button primary">Sign in</button>
+    </form>
+    <p id="loginMessage"></p>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <div class="dashboard-title">
+      <div><p class="eyebrow">DASHBOARD</p><h1>Manage S&S</h1></div>
+      <button id="logoutBtn" class="button">Sign out</button>
+    </div>
+
+    <div class="admin-grid">
+      <section class="panel">
+        <h2>Add collection</h2>
+        <form id="collectionForm">
+          <input id="collectionName" placeholder="Collection name" required>
+          <textarea id="collectionDescription" placeholder="Short description"></textarea>
+          <label>Cover photo<input id="collectionCover" type="file" accept="image/*" required></label>
+          <label class="checkbox"><input id="collectionPinned" type="checkbox"> Pin this collection</label>
+          <input id="collectionOrder" type="number" value="0" placeholder="Display order">
+          <button class="button primary">Create collection</button>
+        </form>
+        <div id="collectionAdminList"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Add product</h2>
+        <form id="productForm">
+          <select id="productCollection" required></select>
+          <input id="productName" placeholder="Product name" required>
+          <textarea id="productDescription" placeholder="Product description"></textarea>
+          <input id="productLink" type="url" placeholder="Affiliate / product link" required>
+          <label>Product photos — select multiple at once<input id="productImages" type="file" accept="image/*" multiple required></label><div id="fileCount" class="hint">No images selected</div>
+          <label class="checkbox"><input id="productPinned" type="checkbox"> Pin this product</label>
+          <input id="productOrder" type="number" value="0" placeholder="Display order">
+          <button class="button primary">Upload product</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="panel">
+      <h2>Manage products</h2>
+      <div id="productAdminList"></div>
+    </section>
+    <p id="adminMessage"></p>
+  </section>
+</main>
+
+<footer>
+  <div class="logo-mark footer-logo">S&S</div>
+  <h3>S&S</h3><p>Handpicked style. Thoughtfully selected.</p><small>© 2026 S&S</small>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
